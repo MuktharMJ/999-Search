@@ -1,20 +1,17 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# 999 Search 🎧
 
-# Run and deploy your AI Studio app
+999 Search is a modern, vibe-driven music discovery platform built for those moments when you don’t remember a song’s name — only how it felt.
 
-This contains everything you need to run your app locally.
+Designed with a focus on simplicity and speed, the platform allows users to search for music using lyrics, moods, or artists, making discovery more intuitive and experience-driven.
 
-View your app in AI Studio: https://ai.studio/apps/f7e7a43e-68bc-46a0-847c-48bade35cea8
+This project explores intelligent search patterns and enhanced query understanding to deliver more relevant and meaningful results.
 
-## Run Locally
+## Features
+- 🔍 Search by lyrics, artist, or title  
+- 🧠 Mood-based discovery (sad, chill, hype, heartbreak)  
+- 🎤 Voice-to-text search (planned)  
+- ⭐ Save and explore favorite tracks  
+- 🌙 Clean, dark-themed UI  
 
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Tech Stack
+React • Node.js • Express • MongoDB
