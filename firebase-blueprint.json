@@ -1,0 +1,53 @@
+{
+  "entities": {
+    "songs": {
+      "title": "Song",
+      "description": "A song in the 999 Search database",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "The title of the song"
+        },
+        "artist": {
+          "type": "string",
+          "description": "The artist of the song"
+        },
+        "lyricsSnippet": {
+          "type": "string",
+          "description": "A snippet of the lyrics"
+        },
+        "mood": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The mood of the song (sad, heartbreak, chill, hype, late night)"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Searchable tags for the song"
+        },
+        "isUnreleased": {
+          "type": "boolean",
+          "description": "Whether the song is unreleased"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the song was added"
+        }
+      },
+      "required": ["title", "artist", "lyricsSnippet", "mood", "tags", "isUnreleased"]
+    }
+  },
+  "firestore": {
+    "songs": {
+      "schema": "songs",
+      "description": "Collection of songs"
+    }
+  }
+}

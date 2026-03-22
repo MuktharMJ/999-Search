@@ -1,0 +1,44 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: songs
+    // Fields:
+    //   - title: string (required)
+    //   - artist: string (required)
+    //   - lyricsSnippet: string (required)
+    //   - mood: list (required)
+    //   - tags: list (required)
+    //   - isUnreleased: bool (required)
+    //   - createdAt: timestamp (optional)
+    //
+    // ===============================================================
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isValidSong(data) {
+      return data.title is string && data.title.size() > 0 && data.title.size() < 200 &&
+             data.artist is string && data.artist.size() > 0 && data.artist.size() < 100 &&
+             data.lyricsSnippet is string && data.lyricsSnippet.size() > 0 && data.lyricsSnippet.size() < 1000 &&
+             data.mood is list && data.mood.size() <= 10 &&
+             data.tags is list && data.tags.size() <= 20 &&
+             data.isUnreleased is bool;
+    }
+
+    match /songs/{songId} {
+      // Allow anyone to read songs (public search)
+      allow read: if true;
+      
+      // Allow authenticated users to create songs (for seeding or community)
+      allow create: if isAuthenticated() && isValidSong(request.resource.data);
+      
+      // Only admins should update/delete (for this demo, we'll keep it simple)
+      allow update, delete: if isAuthenticated();
+    }
+  }
+}
